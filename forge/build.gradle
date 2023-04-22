@@ -81,6 +81,7 @@ components.java {
         skip()
     }
 }
+version = "${rootProject.mod_version}+forge+mc${rootProject.minecraft_version}"
 
 publishing {
     publications {
