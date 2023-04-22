@@ -56,7 +56,16 @@ public class Settings {
             "colormatic.", // Colmatic
             "deepslatecutting.config.", // Deepslate cutting
             "nicerskies.gui.", //Nicer Skies
-            "pingwheel.client." // Ping Wheel
+            "pingwheel.client.", // Ping Wheel
+            "corail.tombstone.gui", // Corail tombstone
+            "fpsreducer.gui.", // FPS Reducer
+            "moreoverlays.gui.", // More Overlays
+            "minecraftforge.client.gui.config.", // minecraft forge config
+            ".computercraft.", // Computer Craft
+            "ctm.client.config", //Connected textures mod
+            "healthoverlay.config.", // Health Overlay
+            ".cotton.gui.impl.modmenu.", // LibGUI
+            "spell_engine.client.gui." // Spell Engine
     );
     public final static List<String> PANORAMA_BLOCK_LIST = Arrays.asList(
             ".voicechat.gui",
