@@ -33,6 +33,7 @@ repositories {
         }
     }
 }
+version = "${rootProject.mod_version}+forge+mc${rootProject.minecraft_version}"
 
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"

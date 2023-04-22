@@ -6,6 +6,7 @@ architectury {
     platformSetupLoomIde()
     fabric()
 }
+version = "${rootProject.mod_version}+fabric+mc${rootProject.minecraft_version}"
 
 configurations {
     common
