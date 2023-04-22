@@ -23,9 +23,9 @@ public class Settings {
             "mc.ipnext.gui", // Inventory Profiles Next
             "me.juancarloscp52.spyglass_improvements.client", // Spyglass Improvements
             "dev.tr7zw.skinlayers.", // 3d skin layers
-            "mcp.mobius.waila.gui.", // jade
+            "mcp.mobius.waila.gui.", // mobius jade
             "dqu.additionaladditions.config", // Additional additions
-            "ru.bclib.gui.modmenu.MainScreen", // BCLib
+            "bclib.client.gui.", // BCLib
             "cominixo.betterf3.config.gui", // betterf3
             "pepperbell.continuity.client.config", // Continuity
             "redlimerl.detailab.screen", //detail armor bar
@@ -42,10 +42,21 @@ public class Settings {
             "net.puzzlemc.gui.screen.", //Puzzlemc
             "midnightdust.core.screen.", // Midnigh config core
             "midnightdust.lib.config.", //midnight lib config
-            "paulevs.betternether.config.", // Better Nether
+            "betternether.config.screen", // Better Nether
             "minenash.enhanced_attack_indicator.config.", // Enhanced attack indicator config
-            "jamalam360.jamlib.config." // Right Click Harvest
-
+            "jamalam360.jamlib.config.", // Right Click Harvest,
+            "darkhax.tipsmod.impl.gui.", // Tips
+            "natamus.collective_common_forge.config.",
+            "natamus.collective_common_fabric.config.",
+            "natamus.collective.fabric.config",
+            "natamus.collective.forge.config", // Collective
+            "izofar.takesapillage.client.gui", // It takes a Pillage
+            "snownee.jade.gui.", // Jade
+            "chunksfadein.gui.", // Chunks Fade In
+            "colormatic.", // Colmatic
+            "deepslatecutting.config.", // Deepslate cutting
+            "nicerskies.gui.", //Nicer Skies
+            "pingwheel.client." // Ping Wheel
     );
     public final static List<String> PANORAMA_BLOCK_LIST = Arrays.asList(
             ".voicechat.gui",
