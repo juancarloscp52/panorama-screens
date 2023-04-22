@@ -2,16 +2,12 @@ package me.juancarloscp52.panorama_screen.forge;
 
 import me.juancarloscp52.panorama_screen.PanoramaScreens;
 import me.juancarloscp52.panorama_screen.SettingsGUI;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screens.ErrorScreen;
-import net.minecraft.network.chat.*;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraftforge.client.ConfigGuiHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.List;
 
 @Mod(PanoramaScreens.MOD_ID)
 public class PanoramaScreensForge {

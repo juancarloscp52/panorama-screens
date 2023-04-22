@@ -1,6 +1,6 @@
 package me.juancarloscp52.panorama_screen.mixin.compat.clothconfig;
 
-import com.mojang.blaze3d.vertex.*;
+import com.mojang.blaze3d.vertex.PoseStack;
 import me.juancarloscp52.panorama_screen.PanoramaScreens;
 import me.shedaniel.clothconfig2.gui.AbstractConfigScreen;
 import me.shedaniel.clothconfig2.gui.GlobalizedClothConfigScreen;

@@ -6,7 +6,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import me.juancarloscp52.panorama_screen.PanoramaScreens;
 import me.juancarloscp52.panorama_screen.RotatingCubeMapRenderer;
-import me.shedaniel.clothconfig2.gui.ClothConfigScreen;
 import me.shedaniel.clothconfig2.gui.widget.DynamicEntryListWidget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
