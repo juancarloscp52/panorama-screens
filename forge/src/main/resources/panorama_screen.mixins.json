@@ -6,8 +6,8 @@
   "mixins": [
   ],
   "client": [
-    "configmenus.CustomBackgroundContainerObjectSelectionListMixin",
-    "configmenus.CustomBackgroundObjectSelectionListMixin"
+    "compat.configmenus.CustomBackgroundContainerObjectSelectionListMixin",
+    "compat.configmenus.CustomBackgroundObjectSelectionListMixin"
   ],
   "injectors": {
     "defaultRequire": 1

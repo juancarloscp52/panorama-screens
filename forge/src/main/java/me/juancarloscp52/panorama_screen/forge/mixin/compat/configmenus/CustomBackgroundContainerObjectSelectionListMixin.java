@@ -1,4 +1,4 @@
-package me.juancarloscp52.panorama_screen.forge.mixin.configmenus;
+package me.juancarloscp52.panorama_screen.forge.mixin.compat.configmenus;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import fuzs.configmenusforge.client.gui.components.CustomBackgroundContainerObjectSelectionList;
@@ -21,7 +21,6 @@ public class CustomBackgroundContainerObjectSelectionListMixin {
         if (!PanoramaScreens.settings.shouldApplyToObject(this.getClass().getName())){
             return;
         }
-        System.out.println("HEY 1");
         RotatingCubeMapRenderer.getInstance().render();
         GuiComponent.fill(poseStack, 0, 0, Minecraft.getInstance().getWindow().getGuiScaledWidth(), Minecraft.getInstance().getWindow().getGuiScaledHeight(), (100 << 24));
     }
