@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "panorama_screens",
+  "version": "${version}",
+  "name": "Panorama Screens",
+  "description": "Enhance Minecraft Screens by adding the Rotating Panorama Background.",
+  "authors": ["juancarloscp52(Im_JC)"],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/panorama-screens",
+    "sources": "https://github.com/juancarloscp52/panorama-screens",
+    "issues": "https://github.com/juancarloscp52/panorama-screens/issues"
+  },
+  "license": "GNU GPL 3.0",
+  "icon": "icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.juancarloscp52.panorama_screen.fabric.PanoramaScreensFabric"
+    ],
+    "modmenu": ["me.juancarloscp52.panorama_screen.fabric.PanoramaScreensModMenu"]
+  },
+  "mixins": [
+    "panorama_screen.mixins.json",
+    "panorama_screen-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.0",
+    "minecraft": ">=1.18.2"
+  }
+}

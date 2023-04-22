@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.juancarloscp52.panorama_screen.forge.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "configmenus.CustomBackgroundContainerObjectSelectionListMixin",
+    "configmenus.CustomBackgroundObjectSelectionListMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

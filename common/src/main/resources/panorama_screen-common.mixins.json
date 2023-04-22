@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "me.juancarloscp52.panorama_screen.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "AbstractSelectionListMixin",
+    "GameRendererMixin",
+    "PanoramaRendererAccessor",
+    "PanoramaRendererMixin",
+    "ScreenMixin",
+    "TitleScreenMixin",
+    "compat.clothconfig.DynamicEntryListWidgetMixin",
+    "compat.clothconfig.GlobalizedClothConfigScreenMixin",
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
