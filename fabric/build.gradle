@@ -44,7 +44,11 @@ processResources {
         expand "version": project.version
     }
 }
-
+configurations.all {
+    resolutionStrategy {
+        force("net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}")
+    }
+}
 shadowJar {
     configurations = [project.configurations.shadowCommon]
     classifier "dev-shadow"
