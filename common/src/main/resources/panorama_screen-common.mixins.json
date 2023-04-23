@@ -7,10 +7,13 @@
   ],
   "client": [
     "AbstractSelectionListMixin",
+    "ExperimentsScreenMixin",
     "GameRendererMixin",
     "PanoramaRendererAccessor",
     "PanoramaRendererMixin",
     "ScreenMixin",
+    "TabButtonMixin",
+    "TabNavigationBarMixin",
     "TitleScreenMixin",
     "compat.clothconfig.DynamicEntryListWidgetMixin",
     "compat.clothconfig.GlobalizedClothConfigScreenMixin"
