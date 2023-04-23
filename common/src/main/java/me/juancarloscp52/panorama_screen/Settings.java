@@ -78,7 +78,8 @@ public class Settings {
             "advancednetherite.client.", // Advanced Netherite
             "minetogether.orderform.screen.", // Minetogether order screen
             "minetogether.chat.gui.MutedUsersScreen", // Minetogether chat muted screen
-            "minetogether.gui.SettingsScreen" // Minetogether Settings Screen
+            "minetogether.gui.SettingsScreen", // Minetogether Settings Screen
+            "configured.client" //Configured
     );
     public final static List<String> PANORAMA_BLOCK_LIST = Arrays.asList(
             ".voicechat.gui",

@@ -26,6 +26,8 @@ public abstract class AbstractSelectionListMixin {
     @Shadow public abstract void setRenderBackground(boolean p_93489_);
     @Shadow public abstract void setRenderTopAndBottom(boolean p_93497_);
 
+    @Shadow private boolean renderBackground;
+
     @Redirect(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/components/AbstractSelectionList;renderBackground(Lcom/mojang/blaze3d/vertex/PoseStack;)V"))
     private void renderPanorama(AbstractSelectionList entryListWidget, PoseStack matrices) {
         if (!PanoramaScreens.settings.shouldApplyToScreen(minecraft.screen)) {
@@ -35,6 +37,21 @@ public abstract class AbstractSelectionListMixin {
 
         RotatingCubeMapRenderer.getInstance().render();
         GuiComponent.fill(matrices, 0, this.y0, minecraft.getWindow().getGuiScaledWidth(), this.y1, (100 << 24));
+    }
+
+    /**
+     * @reason Render panorama on Configured screens.
+     */
+    @Inject(method = "render", at=@At(value = "INVOKE",target ="Lnet/minecraft/client/gui/components/AbstractSelectionList;getRowLeft()I"))
+    public void render(PoseStack poseStack, int i, int j, float f, CallbackInfo ci){
+        // Only apply if it is a Configured screen and is on the allow list
+        if (!(PanoramaScreens.settings.shouldApplyToScreen(minecraft.screen) && minecraft.screen.getClass().getName().contains("configured.client."))) {
+            return;
+        }
+
+        //Disable render background.
+        this.renderBackground = false;
+        RotatingCubeMapRenderer.getInstance().render();
     }
 
     @Inject(method = "<init>", at = @At("RETURN"))
