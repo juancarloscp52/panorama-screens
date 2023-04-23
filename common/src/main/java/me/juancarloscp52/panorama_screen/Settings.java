@@ -73,7 +73,12 @@ public class Settings {
             "oauth.gui.", // Oauth
             "borderless.client.", // Borderless Window
             "borderlessmining.config", // Borderless Minig
-            "languagereload.config." // Language Reload
+            "languagereload.config.", // Language Reload
+            "ftbauxilium.screens.", // FTB Auxilium
+            "advancednetherite.client.", // Advanced Netherite
+            "minetogether.orderform.screen.", // Minetogether order screen
+            "minetogether.chat.gui.MutedUsersScreen", // Minetogether chat muted screen
+            "minetogether.gui.SettingsScreen" // Minetogether Settings Screen
     );
     public final static List<String> PANORAMA_BLOCK_LIST = Arrays.asList(
             ".voicechat.gui",
