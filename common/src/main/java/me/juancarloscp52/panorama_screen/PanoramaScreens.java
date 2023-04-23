@@ -19,6 +19,8 @@ public class PanoramaScreens {
         loadSettings();
     }
 
+    public static boolean isLanguageReloadLoaded = false;
+
     public static void loadSettings() {
         File file = new File("./config/panorama_screens/settings.json");
         Gson gson = new Gson();

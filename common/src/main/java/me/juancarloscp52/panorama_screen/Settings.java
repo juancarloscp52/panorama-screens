@@ -1,6 +1,8 @@
 package me.juancarloscp52.panorama_screen;
 
+import net.minecraft.client.gui.screens.LanguageSelectScreen;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.gui.screens.packs.PackSelectionScreen;
 import net.minecraft.client.gui.screens.social.SocialInteractionsScreen;
 
@@ -9,7 +11,7 @@ import java.util.List;
 
 public class Settings {
 
-    private final static List<Class<? extends Screen>> MINECRAFT_IGNORED_SCREENS = Arrays.asList(PackSelectionScreen.class, SocialInteractionsScreen.class);
+    private final static List<Class<? extends Screen>> MINECRAFT_IGNORED_SCREENS = Arrays.asList(TitleScreen.class,PackSelectionScreen.class, SocialInteractionsScreen.class);
     public final static List<String> PANORAMA_ALLOW_LIST = Arrays.asList(
             "net.minecraft.",
             "net.optifine.gui.", //Optifine
@@ -65,8 +67,13 @@ public class Settings {
             "ctm.client.config", //Connected textures mod
             "healthoverlay.config.", // Health Overlay
             ".cotton.gui.impl.modmenu.", // LibGUI
-            "spell_engine.client.gui." // Spell Engine
-
+            "spell_engine.client.gui.", // Spell Engine
+            "catalogue.client.", // Catalogue
+            "bisecthosting.mods.bhmenu", // Bisect Hositng BHMenu
+            "oauth.gui.", // Oauth
+            "borderless.client.", // Borderless Window
+            "borderlessmining.config", // Borderless Minig
+            "languagereload.config." // Language Reload
     );
     public final static List<String> PANORAMA_BLOCK_LIST = Arrays.asList(
             ".voicechat.gui",
@@ -83,7 +90,7 @@ public class Settings {
         // Check If screen is in whitelist list.
         boolean onWhitelist = false;
         for (String allowedClass : panoramaAllowList) {
-            if (classname.contains(allowedClass.trim())){
+            if (classname.toLowerCase().contains(allowedClass.toLowerCase().trim())){
                 onWhitelist=true;
                 break;
             }
@@ -95,7 +102,7 @@ public class Settings {
 
         // don't apply if it is in blacklist (this is used for allowing mods but not certain screens).
         for (String blockedClass : panoramaBlockList) {
-            if (classname.contains(blockedClass.trim())){
+            if (classname.toLowerCase().contains(blockedClass.toLowerCase().trim())){
                 return false;
             }
         }
@@ -106,6 +113,10 @@ public class Settings {
         if (screen != null) {
             // Checks if the screen is a Minecraft screen that would break in any case
             if (MINECRAFT_IGNORED_SCREENS.contains(screen.getClass()))
+                return false;
+
+            // Do not render in language screen when Language Reload is loaded.
+            if(screen.getClass().equals(LanguageSelectScreen.class) && PanoramaScreens.isLanguageReloadLoaded)
                 return false;
 
             return shouldApplyToObject(screen.getClass().getName());
