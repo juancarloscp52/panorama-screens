@@ -13,7 +13,7 @@
     "ScreenMixin",
     "TitleScreenMixin",
     "compat.clothconfig.DynamicEntryListWidgetMixin",
-    "compat.clothconfig.GlobalizedClothConfigScreenMixin",
+    "compat.clothconfig.GlobalizedClothConfigScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1
