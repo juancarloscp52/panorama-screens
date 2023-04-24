@@ -1,4 +1,4 @@
-<img alt="Panorama Screens Logo" height="255" src="images/logo.gif" title="Logo" width="255"/>
+<img alt="Panorama Screens Logo" height="300" src="images/animated-banner.gif" title="Logo"/>
 
 # Panorama Screens
 Panorama Screens is a mod that enhances Minecraft screens by adding the title screen rotating panorama background. 
@@ -31,7 +31,7 @@ This mod requires [Fabric](https://fabricmc.net/use/) and [Fabric API](https://w
 - Success!
 
 ## Building from source:
-Panorama-Screens screens can be built for both forge and fabric.
+Panorama Screens can be built for both forge and fabric.
 **Under Linux / macOS**
 ```shell script
 git clone https://github.com/juancarloscp52/panorama-screens/
@@ -46,4 +46,4 @@ gradlew build
 ```
 You can find the built JARs inside panorama-screens/forge/build/libs and panorama-screens/fabric/build/libs
 ## License
-Bedrockify is released under the free and open-source [GPL-3.0 License](LICENSE).
+Panorama Screens is released under the free and open-source [GPL-3.0 License](LICENSE).
