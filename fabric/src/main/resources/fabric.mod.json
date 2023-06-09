@@ -24,7 +24,7 @@
     "panorama_screen-common.mixins.json"
   ],
   "depends": {
-    "fabricloader": ">=0.14.0",
-    "minecraft": ">=1.19.4"
+    "fabricloader": ">=0.14.7",
+    "minecraft": "1.20.x"
   }
 }

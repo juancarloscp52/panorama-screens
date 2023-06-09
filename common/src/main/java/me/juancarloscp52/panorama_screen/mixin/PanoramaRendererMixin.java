@@ -1,6 +1,8 @@
 package me.juancarloscp52.panorama_screen.mixin;
 
 import me.juancarloscp52.panorama_screen.RotatingCubeMapRenderer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.PanoramaRenderer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -12,7 +14,7 @@ public class PanoramaRendererMixin {
 
     @Inject(method = "render", at=@At("HEAD"),cancellable = true)
     public void renderBedrockIfyCubeMap(float delta, float alpha, CallbackInfo ci){
-        RotatingCubeMapRenderer.getInstance().render(alpha, true);
+        RotatingCubeMapRenderer.getInstance().render(new GuiGraphics(Minecraft.getInstance(),Minecraft.getInstance().renderBuffers().bufferSource()),alpha, true);
         ci.cancel();
     }
 

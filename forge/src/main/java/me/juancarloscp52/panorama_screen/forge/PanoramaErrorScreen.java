@@ -1,8 +1,9 @@
 package me.juancarloscp52.panorama_screen.forge;
 
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.ErrorScreen;
 import net.minecraft.network.chat.Component;
+import org.jetbrains.annotations.NotNull;
 
 public class PanoramaErrorScreen extends ErrorScreen {
     Component arg3;
@@ -12,8 +13,8 @@ public class PanoramaErrorScreen extends ErrorScreen {
     }
 
     @Override
-    public void render(PoseStack arg, int i, int j, float f) {
-        super.render(arg, i, j, f);
-        drawCenteredString(arg, this.font, this.arg3, this.width / 2, 120, 16777215);
+    public void render(@NotNull GuiGraphics guiGraphics, int i, int j, float f) {
+        super.render(guiGraphics, i, j, f);
+        guiGraphics.drawCenteredString(this.font, this.arg3, this.width / 2, 120, 16777215);
     }
 }

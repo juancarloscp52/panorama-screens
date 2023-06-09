@@ -1,7 +1,7 @@
 package me.juancarloscp52.panorama_screen.mixin;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import me.juancarloscp52.panorama_screen.RotatingCubeMapRenderer;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.renderer.PanoramaRenderer;
@@ -32,11 +32,11 @@ public abstract class TitleScreenMixin extends Screen {
     }
 
     @Inject(method = "render", at=@At(value = "INVOKE",target = "Lnet/minecraft/client/renderer/PanoramaRenderer;render(FF)V"))
-    public void updatePanorama(PoseStack matrix, int mouseX, int mouseY, float delta, CallbackInfo ci){
+    public void updatePanorama(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta, CallbackInfo ci){
         RotatingCubeMapRenderer.getInstance().update(panorama, PANORAMA_OVERLAY, fading, fadeInStart);
     }
 
-    @ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/RenderSystem;setShaderTexture(ILnet/minecraft/resources/ResourceLocation;)V", ordinal = 0),index = 1)
+    @ModifyArg(method = "render", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/GuiGraphics;blit(Lnet/minecraft/resources/ResourceLocation;IIIIFFIIII)V"),index = 0)
     private ResourceLocation getOverlayProd(ResourceLocation location) {
         RotatingCubeMapRenderer.getInstance().updateOverlayId(location);
         return location;

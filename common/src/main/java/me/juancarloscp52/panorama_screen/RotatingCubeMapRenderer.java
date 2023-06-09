@@ -6,6 +6,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import me.juancarloscp52.panorama_screen.mixin.PanoramaRendererAccessor;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.TitleScreen;
 import net.minecraft.client.renderer.CubeMap;
 import net.minecraft.client.renderer.PanoramaRenderer;
@@ -36,21 +37,20 @@ public class RotatingCubeMapRenderer {
         this.time += delta;
     }
 
-    public void render(){
-        render(1, false);
+    public void render(GuiGraphics guiGraphics){
+        render(guiGraphics, 1, false);
     }
 
-    public void render(float alpha, boolean titleScreen){
+    public void render(GuiGraphics guiGraphics, float alpha, boolean titleScreen){
         this.cubeMap.render(Minecraft.getInstance(), Mth.sin(time*0.001F)*5.0F + 25.0F,-this.time*0.1F,alpha);
         if(!titleScreen){
             PoseStack matrices = new PoseStack();
 
             //Render panorama overlay
-            RenderSystem.setShaderTexture(0, overlay);
             RenderSystem.enableBlend();
             float f = this.doBackgroundFade ? (float)(Util.getMillis() - this.backgroundFadeStart) / 1000.0f : 1.0f;
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, this.doBackgroundFade ? (float)Mth.ceil(Mth.clamp(f, 0.0f, 1.0f)) : 1.0f);
-            TitleScreen.blit(matrices, 0, 0, Minecraft.getInstance().getWindow().getGuiScaledWidth(), Minecraft.getInstance().getWindow().getGuiScaledHeight(), 0.0f, 0.0f, 16, 128, 16, 128);
+            guiGraphics.blit(overlay, 0, 0, Minecraft.getInstance().getWindow().getGuiScaledWidth(), Minecraft.getInstance().getWindow().getGuiScaledHeight(), 0.0f, 0.0f, 16, 128, 16, 128);
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         }
     }

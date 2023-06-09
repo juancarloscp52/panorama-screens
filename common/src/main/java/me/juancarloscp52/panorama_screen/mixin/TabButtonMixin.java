@@ -1,10 +1,9 @@
 package me.juancarloscp52.panorama_screen.mixin;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import me.juancarloscp52.panorama_screen.PanoramaScreens;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.TabButton;
 import net.minecraft.network.chat.Component;
@@ -21,9 +20,9 @@ public abstract class TabButtonMixin extends AbstractWidget {
 
     @Shadow public abstract boolean isSelected();
 
-    @Shadow public abstract void renderString(PoseStack poseStack, Font font, int i);
+    @Shadow public abstract void renderString(GuiGraphics guiGraphics, Font font, int i);
 
-    @Shadow protected abstract void renderFocusUnderline(PoseStack poseStack, Font font, int i);
+    @Shadow protected abstract void renderFocusUnderline(GuiGraphics guiGraphics, Font font, int i);
 
     private static final ResourceLocation TEXTURE = new ResourceLocation("panorama_screens","textures/gui/tab_button.png");
 
@@ -32,21 +31,20 @@ public abstract class TabButtonMixin extends AbstractWidget {
     }
 
     @Inject(method = "renderWidget", at=@At("HEAD"),cancellable = true)
-    public void renderButton(PoseStack matrices, int mouseX, int mouseY, float delta, CallbackInfo ci) {
+    public void renderButton(GuiGraphics guiGraphics, int mouseX, int mouseY, float delta, CallbackInfo ci) {
         Minecraft minecraft = Minecraft.getInstance();
         if (!PanoramaScreens.settings.shouldApplyToScreen(minecraft.screen)) {
             return;
         }
-        RenderSystem.setShaderTexture(0, TEXTURE);
-        TabButton.blitNineSliced(matrices, this.getX(), this.getY(), this.width, this.height, 2, 2, 2, 0, 130, 24, 0, this.getTextureY());
+        guiGraphics.blitNineSliced(TEXTURE,this.getX(), this.getY(), this.width, this.height, 2, 2, 2, 0, 130, 24, 0, this.getTextureY());
         if(!this.isSelected()){
-            TabButton.fill(matrices,this.getX()+2, this.getY()+6, this.getX()+this.width-2, this.getY()+this.height-2,(100 << 24));
+            guiGraphics.fill(this.getX()+2, this.getY()+6, this.getX()+this.width-2, this.getY()+this.height-2,(100 << 24));
         }
         Font textRenderer = minecraft.font;
         int i = this.active ? -1 : -6250336;
-        this.renderString(matrices, textRenderer, i);
+        this.renderString(guiGraphics, textRenderer, i);
         if (this.isSelected()) {
-            this.renderFocusUnderline(matrices, textRenderer, i);
+            this.renderFocusUnderline(guiGraphics, textRenderer, i);
         }
         ci.cancel();
     }

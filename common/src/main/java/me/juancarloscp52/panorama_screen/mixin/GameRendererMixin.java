@@ -14,7 +14,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class GameRendererMixin {
 
 
-    @Shadow @Final private Minecraft minecraft;
+    @Shadow @Final
+    Minecraft minecraft;
 
     @Inject(method = "render", at=@At(value = "INVOKE",target = "Lnet/minecraft/client/Minecraft;getDeltaFrameTime()F",ordinal = 1))
     public void updatePanorama(float tickDelta, long startTime, boolean tick, CallbackInfo ci){
