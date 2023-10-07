@@ -83,7 +83,9 @@ public class Settings {
             "voicechat.gui.VoiceChatSettingsScreen" // Voice chat config
     );
     public final static List<String> PANORAMA_BLOCK_LIST = Arrays.asList(
-            "net.optifine.shaders.gui." // shaders screen on optifine does not work.
+            "net.optifine.shaders.gui.", // shaders screen on optifine does not work.
+            "net.minecraftforge.client.gui.ModListScreen" // forge mod list
+
     );
 
     public boolean printScreenNames = false;

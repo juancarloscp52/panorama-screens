@@ -23,10 +23,10 @@ public class ExperimentsScreenMixin extends Screen {
         super(title);
     }
 
-    @Inject(method = "render", at = @At("HEAD"),cancellable = true)
-    public void render (GuiGraphics guiGraphics, int mouseX, int mouseY, float delta, CallbackInfo ci){
+    @Inject(method = "renderBackground", at = @At("HEAD"),cancellable = true)
+    public void renderBackground (GuiGraphics guiGraphics, int mouseX, int mouseY, float delta, CallbackInfo ci){
         // Background
-        this.renderBackground(guiGraphics);
+        super.renderBackground(guiGraphics, mouseX,mouseY,delta);
         guiGraphics.fill(0, 0, this.width, this.height, (100 << 24));
 
         //Header and footer
@@ -38,8 +38,6 @@ public class ExperimentsScreenMixin extends Screen {
         //Header and footer shadows.
         guiGraphics.fillGradient(0, this.layout.getHeaderHeight(), this.width, this.layout.getHeaderHeight() + 4, -16777216, 0);
         guiGraphics.fillGradient(0, this.height-this.layout.getFooterHeight() - 4, this.width, this.height-this.layout.getFooterHeight(), 0, -16777216);
-
-        super.render(guiGraphics, mouseX, mouseY, delta);
 
         ci.cancel();
     }

@@ -2,7 +2,6 @@ package me.juancarloscp52.panorama_screen;
 
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import me.juancarloscp52.panorama_screen.mixin.PanoramaRendererAccessor;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -19,8 +18,6 @@ public class RotatingCubeMapRenderer {
     private CubeMap cubeMap = TitleScreen.CUBE_MAP;
     private static RotatingCubeMapRenderer INSTANCE;
     private float time= 0;
-    private static final ResourceLocation PANORAMA_OVERLAY = new ResourceLocation("textures/gui/title/background/panorama_overlay.png");
-
     private boolean doBackgroundFade;
     private long backgroundFadeStart;
     private ResourceLocation overlay = new ResourceLocation("textures/gui/title/background/panorama_overlay.png");
@@ -44,8 +41,6 @@ public class RotatingCubeMapRenderer {
     public void render(GuiGraphics guiGraphics, float alpha, boolean titleScreen){
         this.cubeMap.render(Minecraft.getInstance(), Mth.sin(time*0.001F)*5.0F + 25.0F,-this.time*0.1F,alpha);
         if(!titleScreen){
-            PoseStack matrices = new PoseStack();
-
             //Render panorama overlay
             RenderSystem.enableBlend();
             float f = this.doBackgroundFade ? (float)(Util.getMillis() - this.backgroundFadeStart) / 1000.0f : 1.0f;

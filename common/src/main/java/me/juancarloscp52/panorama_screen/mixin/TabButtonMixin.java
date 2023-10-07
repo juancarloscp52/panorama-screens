@@ -6,25 +6,26 @@ import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.TabButton;
+import net.minecraft.client.gui.components.WidgetSprites;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(TabButton.class)
 public abstract class TabButtonMixin extends AbstractWidget {
-    @Shadow protected abstract int getTextureY();
-
     @Shadow public abstract boolean isSelected();
 
     @Shadow public abstract void renderString(GuiGraphics guiGraphics, Font font, int i);
 
     @Shadow protected abstract void renderFocusUnderline(GuiGraphics guiGraphics, Font font, int i);
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation("panorama_screens","textures/gui/tab_button.png");
+    @Unique
+    private static final WidgetSprites SPRITES = new WidgetSprites(new ResourceLocation("panorama_screens", "widget/tab_selected"), new ResourceLocation("panorama_screens", "widget/tab"), new ResourceLocation("panorama_screens", "widget/tab_selected_highlighted"), new ResourceLocation("panorama_screens", "widget/tab_highlighted"));
 
     public TabButtonMixin(int x, int y, int width, int height, Component message) {
         super(x, y, width, height, message);
@@ -36,7 +37,7 @@ public abstract class TabButtonMixin extends AbstractWidget {
         if (!PanoramaScreens.settings.shouldApplyToScreen(minecraft.screen)) {
             return;
         }
-        guiGraphics.blitNineSliced(TEXTURE,this.getX(), this.getY(), this.width, this.height, 2, 2, 2, 0, 130, 24, 0, this.getTextureY());
+        guiGraphics.blitSprite(SPRITES.get(this.isSelected(), this.isHovered()), this.getX(), this.getY(), this.width, this.height);
         if(!this.isSelected()){
             guiGraphics.fill(this.getX()+2, this.getY()+6, this.getX()+this.width-2, this.getY()+this.height-2,(100 << 24));
         }
@@ -49,5 +50,4 @@ public abstract class TabButtonMixin extends AbstractWidget {
         ci.cancel();
     }
 
-
-    }
+}
