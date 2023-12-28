@@ -47,8 +47,8 @@ public abstract class ScreenMixin{
                 if(null!= this.minecraft && this.minecraft.level != null){
                     info.cancel();
                     guiGraphics.setColor(0.25f, 0.25f, 0.25f, 1.0f);
-                    guiGraphics.blit(BACKGROUND_LOCATION, 0, 0, 0, 0.0f, 0.0f, this.width, ((AbstractSelectionListAccessor)(guiEventListener)).getY0(), 32, 32);
-                    guiGraphics.blit(BACKGROUND_LOCATION, 0, ((AbstractSelectionListAccessor)(guiEventListener)).getY1(), 0, 0.0f, 0.0f, this.width, this.height, 32, 32);
+                    guiGraphics.blit(BACKGROUND_LOCATION, 0, 0, 0, 0.0f, 0.0f, this.width, ((AbstractSelectionList<?>) guiEventListener).getY(), 32, 32);
+                    guiGraphics.blit(BACKGROUND_LOCATION, 0, ((AbstractSelectionList<?>) guiEventListener).getBottom(), 0, 0.0f, 0.0f, this.width, this.height, 32, 32);
                     guiGraphics.setColor(1.0f, 1.0f, 1.0f, 1.0f);
                 }
             }

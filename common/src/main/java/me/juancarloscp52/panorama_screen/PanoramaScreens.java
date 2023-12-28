@@ -30,7 +30,7 @@ public class PanoramaScreens {
                 settings = gson.fromJson(fileReader, Settings.class);
                 fileReader.close();
             } catch (IOException e) {
-                LOGGER.warn("Could not load bedrockIfy settings: " + e.getLocalizedMessage());
+                LOGGER.warn("Could not load panorama-screens settings: " + e.getLocalizedMessage());
             }
         } else {
             settings = new Settings();
@@ -49,7 +49,7 @@ public class PanoramaScreens {
             fileWriter.write(gson.toJson(settings));
             fileWriter.close();
         } catch (IOException e) {
-            LOGGER.warn("Could not save bedrockIfy settings: " + e.getLocalizedMessage());
+            LOGGER.warn("Could not save panorama-screens settings: " + e.getLocalizedMessage());
         }
     }
 }
