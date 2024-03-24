@@ -13,6 +13,7 @@ configurations {
     runtimeClasspath.extendsFrom common
     developmentForge.extendsFrom common
 }
+
 loom {
     forge {
 
@@ -57,17 +58,16 @@ shadowJar {
     exclude "fabric.mod.json"
 
     configurations = [project.configurations.shadowCommon]
-    classifier "dev-shadow"
+    archiveClassifier = "dev-shadow"
 }
 
 remapJar {
     input.set shadowJar.archiveFile
     dependsOn shadowJar
-    classifier null
 }
 
 jar {
-    classifier "dev"
+    archiveClassifier =  "dev"
 }
 
 sourcesJar {
