@@ -42,6 +42,7 @@ public class RotatingCubeMapRenderer {
     }
 
     public void render(GuiGraphics guiGraphics, float alpha, boolean titleScreen){
+        guiGraphics.enableScissor(0, 0, guiGraphics.guiWidth(), guiGraphics.guiHeight());
         this.cubeMap.render(Minecraft.getInstance(), Mth.sin(time*0.001F)*5.0F + 25.0F,-this.time*0.1F,alpha);
         if(!titleScreen){
             PoseStack matrices = new PoseStack();
@@ -50,9 +51,10 @@ public class RotatingCubeMapRenderer {
             RenderSystem.enableBlend();
             float f = this.doBackgroundFade ? (float)(Util.getMillis() - this.backgroundFadeStart) / 1000.0f : 1.0f;
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, this.doBackgroundFade ? (float)Mth.ceil(Mth.clamp(f, 0.0f, 1.0f)) : 1.0f);
-            guiGraphics.blit(overlay, 0, 0, Minecraft.getInstance().getWindow().getGuiScaledWidth(), Minecraft.getInstance().getWindow().getGuiScaledHeight(), 0.0f, 0.0f, 16, 128, 16, 128);
+            guiGraphics.blit(overlay, 0, 0, guiGraphics.guiWidth(), guiGraphics.guiHeight(), 0.0f, 0.0f, 16, 128, 16, 128);
             RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         }
+        guiGraphics.disableScissor();
     }
 
     public void update(PanoramaRenderer renderer, ResourceLocation panoramaOverlay, boolean doBackgroundFade, long backgroundFadeStart) {
